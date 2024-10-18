@@ -2,6 +2,7 @@ const express = require("express")
 const Show = require("../models/Show")
 const User = require("../models/User")
 const router = express.Router()
+const sequelize = require("../db/connection")
 
 
 router.get("/", async (req, res) => {
@@ -35,7 +36,7 @@ router.delete("/:id", async (req, res) => {
     res.json(deleteShow)
 })
 
-router.get('/:genre', async (req, res) => {
+router.get('/genre/:genre', async (req, res) => {
     try {
       const genre = req.params.genre;
   
@@ -48,5 +49,4 @@ router.get('/:genre', async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
-
  module.exports = router
